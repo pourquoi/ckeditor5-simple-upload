@@ -27,6 +27,24 @@ module.exports = {
     ],
 
     // ...
+
+    config: {
+		toolbar: {
+			items: [
+				'headings',
+				'bold',
+                'italic',
+                'insertImage',
+				'link',
+				'bulletedList',
+				'numberedList',
+				'blockQuote',
+				'undo',
+				'redo'
+			]
+        },
+        // ...
+    }
 }
         
 ```
