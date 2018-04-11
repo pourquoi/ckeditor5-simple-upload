@@ -4,7 +4,7 @@
 
 https://docs.ckeditor.com/ckeditor5/latest/builds/guides/development/custom-builds.html
 
-```yarn add ckeditor5-simple-upload```
+```npm install ckeditor5-simple-upload```
 
 add this plugin and remove the ckfinder and easyimage plugins
 
@@ -29,19 +29,19 @@ module.exports = {
     // ...
 
     config: {
-		toolbar: {
-			items: [
-				'headings',
-				'bold',
+        toolbar: {
+            items: [
+                'headings',
+                'bold',
                 'italic',
-                'insertImage',
-				'link',
-				'bulletedList',
-				'numberedList',
-				'blockQuote',
-				'undo',
-				'redo'
-			]
+                'imageUpload',
+                'link',
+                'bulletedList',
+                'numberedList',
+                'blockQuote',
+                'undo',
+                'redo'
+            ]
         },
         // ...
     }
@@ -61,22 +61,22 @@ ClassicEditor.create(document.querySelector( '#editor' ), {
 
 ### backend
 
-the endpoint will receive a file named **upload**
+the endpoint will receive a file named **upload** and should return the image url
 
 success response :
 ```json
 {
-    uploaded: true,
-    url: "http://127.0.0.1/uploaded-image.jpeg"
+    "uploaded": true,
+    "url": "http://127.0.0.1/uploaded-image.jpeg"
 }
 ```
 
 failure response :
 ```json
 {
-    uploaded: false,
-    error: {
-        message: "could not upload this image"
+    "uploaded": false,
+    "error": {
+        "message": "could not upload this image"
     }
 }
 ```

@@ -21,6 +21,6 @@ export default class SimpleUpload extends Plugin {
             return;
         }
 
-        this.editor.plugins.get(FileRepository).createAdapter = loader => new Adapter(loader, url, this.editor.t);
+        this.editor.plugins.get(FileRepository).createUploadAdapter = loader => new Adapter(loader, url, this.editor.t);
     }
 }
