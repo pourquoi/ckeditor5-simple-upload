@@ -59,6 +59,15 @@ ClassicEditor.create(document.querySelector( '#editor' ), {
 })
 ```
 
+```javascript
+var cb = function() { return (new Date()).getTime() }
+ClassicEditor.create(document.querySelector( '#editor' ), {
+    simpleUpload: {
+        uploadUrl: {url:'http://127.0.0.1/my-upload-endpoint', headers:{ 'x-header':'myhead', 'x-header-cb': cb } }
+    }
+})
+```
+
 ### backend
 
 the endpoint will receive a file named **upload** and should return the image url
