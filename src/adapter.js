@@ -1,7 +1,7 @@
 export default class Adapter {
-    constructor(loader, url, t) {
+    constructor(loader, urlOrObject, t) {
         this.loader = loader;
-        this.url = url;
+        this.urlOrObject = urlOrObject;
         this.t = t;
     }
 
@@ -21,9 +21,26 @@ export default class Adapter {
 
     _initRequest() {
         const xhr = this.xhr = new XMLHttpRequest();
+		
+		let url = this.urlOrObject;
+		let headers = null;
+		if (typeof(this.urlOrObject) === 'object'){
+			url=this.urlOrObject.url;
+			headers = this.urlOrObject.headers;
+		}
 
         xhr.withCredentials = true;
-        xhr.open('POST', this.url, true);
+        xhr.open('POST', url, true);
+		if (headers !== null){
+			for(let key in headers){
+				if (typeof(headers[key]) === 'function'){
+					xhr.setRequestHeader(key, headers[key]());
+				}else{
+					xhr.setRequestHeader(key, headers[key]);
+				}
+			}
+		}
+		
         xhr.responseType = 'json';
     }
 
