@@ -9,7 +9,7 @@ export default class Adapter {
         return new Promise((resolve, reject) => {
             this._initRequest();
             this._initListeners(resolve, reject);
-            this._sendRequest();
+            this._sendRequest(reject);
         });
     }
 
@@ -74,9 +74,19 @@ export default class Adapter {
         }
     }
 
-    _sendRequest() {
-        const data = new FormData();
-        data.append('upload', this.loader.file);
-        this.xhr.send(data);
+    _sendRequest( reject ) {
+		this.loader.file
+		.then( file => {
+			// Prepare the form data.
+			const data = new FormData();
+			data.append( 'upload', file );
+			// Important note: This is the right place to implement security mechanisms
+			// like authentication and CSRF protection. For instance, you can use
+			// XMLHttpRequest.setRequestHeader() to set the request headers containing
+			// the CSRF token generated earlier by your application.
+			// Send the request.
+			this.xhr.send( data );
+		} )
+		.catch( reject );
     }
 }
