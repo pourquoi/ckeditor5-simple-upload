@@ -9,45 +9,55 @@ https://docs.ckeditor.com/ckeditor5/latest/builds/guides/development/custom-buil
 add this plugin and remove the ckfinder and easyimage plugins
 
 ```javascript
-// build-config.js
+// src/ckeditor.js
 
-module.exports = {
-	// ...
-	
-	plugins: [
-        '@ckeditor/ckeditor5-essentials/src/essentials',
-        // ...
+//import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
+import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
+import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
+import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
+//import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
+//import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
 
-        //'@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter',
-        //'@ckeditor/ckeditor5-easy-image/src/easyimage',
+// ...
 
-        'ckeditor5-simple-upload/src/simpleupload'
-
-        // ...
-    ],
-
+// Plugins to include in the build.
+ClassicEditor.builtinPlugins = [
+	Essentials,
+//	UploadAdapter,
+	Autoformat,
+	Bold,
+	Italic,
+	BlockQuote,
+//	CKFinder,
+//	EasyImage,
+	Heading,
+    Image,
+    
     // ...
+]
 
-    config: {
-        toolbar: {
-            items: [
-                'headings',
-                'bold',
-                'italic',
-                'imageUpload',
-                'link',
-                'bulletedList',
-                'numberedList',
-                'blockQuote',
-                'undo',
-                'redo'
-            ]
-        },
-        // ...
-    }
+ClassicEditor.defaultConfig = {
+	toolbar: {
+		items: [
+			'heading',
+			'|',
+			'bold',
+			'italic',
+			'link',
+			'bulletedList',
+			'numberedList',
+			'imageUpload',
+			'blockQuote',
+			'insertTable',
+			'mediaEmbed',
+			'undo',
+			'redo'
+		]
+    },
+    
+    // ...
 }
-        
-```
 
 ### configuration
 
