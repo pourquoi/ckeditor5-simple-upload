@@ -1,6 +1,6 @@
 {
   "name": "ckeditor5-simple-upload",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Standart image upload plugin for ckeditor5",
   "keywords": [
     "ckeditor5",
@@ -17,12 +17,10 @@
   "author": "pourquoi",
   "license": "MIT",
   "dependencies": {
-    "@ckeditor/ckeditor5-core": "^10.0.0",
-    "@ckeditor/ckeditor5-engine": "^10.0.0",
-    "@ckeditor/ckeditor5-upload": "^10.0.0"
+    "@ckeditor/ckeditor5-core": ">=12.2.1",
+    "@ckeditor/ckeditor5-upload": ">=11.1.1"
   },
   "devDependencies": {
-    "@ckeditor/ckeditor5-editor-classic": "^10.0.0",
-    "@ckeditor/ckeditor5-utils": "^10.0.0"
+    "@ckeditor/ckeditor5-editor-classic": ">=12.1.3"
   }
 }
